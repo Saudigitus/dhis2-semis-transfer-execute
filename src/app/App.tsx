@@ -7,7 +7,7 @@ import { Router } from '../components/routes'
 const MyApp = () => {
 
     return (
-        <AppWrapper dataStoreKey='semis/values'>
+        <AppWrapper dataStoreKey='dataStore/semis/values'>
             <Router/>
         </AppWrapper>
     )
