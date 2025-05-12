@@ -1,14 +1,14 @@
 import React from 'react'
 import './App.module.css'
 import { AppWrapper } from 'dhis2-semis-components'
-import TransferExecute from '../pages/trasferExecute/TransferExecute'
 import { Router } from '../components/routes'
+import '../index.css'
 
 const MyApp = () => {
 
     return (
         <AppWrapper dataStoreKey='dataStore/semis/values'>
-            <Router/>
+            <Router />
         </AppWrapper>
     )
 }
