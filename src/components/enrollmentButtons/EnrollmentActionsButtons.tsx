@@ -3,8 +3,8 @@ import { IconAddCircle24, Button, ButtonStrip } from "@dhis2/ui";
 import Tooltip from '@material-ui/core/Tooltip';
 import styles from './enrollmentActionsButtons.module.css'
 import { useUrlParams } from 'dhis2-semis-functions';
-import { Form } from "react-final-form";
 import { ProgramConfig, selectedDataStoreKey } from 'dhis2-semis-types'
+import RequestTransferModal from '../modal/requestTransferModa';
 
 function EnrollmentActionsButtons({ programData, selectedDataStoreKey, selected, setSelected }: { setSelected: (args: any) => void, selected: any, programData: ProgramConfig, selectedDataStoreKey: selectedDataStoreKey }) {
     const { urlParameters } = useUrlParams();
@@ -23,8 +23,9 @@ function EnrollmentActionsButtons({ programData, selectedDataStoreKey, selected,
                         </Button>
                     </span>
                 </Tooltip>
-
             </ButtonStrip>
+
+            {openRequestModal && <RequestTransferModal setSelected={setSelected} programData={programData} selectedDataStoreKey={selectedDataStoreKey} selected={selected} open={openRequestModal} setOpen={setOpenRequestModal} />}
         </div>
     )
 }

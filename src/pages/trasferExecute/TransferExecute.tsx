@@ -18,8 +18,8 @@ const TransferExecute = () => {
   const { viewPortWidth } = useViewPortWidth();
   const { urlParameters } = useUrlParams();
   const { academicYear, grade, class: section, school, schoolName, } = urlParameters();
-  const { getData, tableData, loading } = useTableData({ module: Modules.Enrollment, selectedDataStore: dataStoreData, });
-  const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, tableColumns: [], module: Modules.Enrollment, });
+  const { getData, tableData, loading } = useTableData({ module: Modules.Transfer });
+  const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, tableColumns: [], programStage: "" });
   const [filterState, setFilterState] = useState<{ dataElements: any; attributes: any; }>({ attributes: [], dataElements: [] });
   const [refetch] = useRecoilState(TableDataRefetch);
 
@@ -32,24 +32,14 @@ const TransferExecute = () => {
         orgUnit: school,
         baseProgramStage: dataStoreData?.registration?.programStage as string,
         attributeFilters: filterState.attributes,
-        dataElementFilters: [filterState.dataElements],
+        dataElementFilters: [
+          academicYear !== null ? `${dataStoreData.registration.academicYear}:in:${academicYear}` : null,
+          grade !== null ? `${dataStoreData.registration.grade}:in:${grade}` : null,
+          section !== null ? `${dataStoreData.registration.section}:in:${section}` : null,
+        ].filter((filter): filter is string => filter !== null),
       });
     }
-  }, [filterState, refetch, school, pagination]);
-
-  useEffect(() => {
-    const filters = [
-      academicYear !== null
-        ? `${dataStoreData.registration.academicYear}:in:${academicYear}`
-        : null,
-      grade !== null ? `${dataStoreData.registration.grade}:in:${grade}` : null,
-      section !== null
-        ? `${dataStoreData.registration.section}:in:${section}`
-        : null,
-    ].filter(Boolean); // Remove valores nulos
-
-    setFilterState({ ...filterState, dataElements: filters.join(",") });
-  }, [academicYear, grade, section]);
+  }, [filterState, refetch, school, pagination, academicYear, grade, section]);
 
   return (
     <div style={{ height: "85vh" }}>
@@ -58,7 +48,7 @@ const TransferExecute = () => {
       ) : (
         <Table
           programConfig={programData}
-          title="Transfers"
+          title="Transfer"
           viewPortWidth={viewPortWidth}
           columns={columns}
           tableData={tableData.data}
