@@ -7,9 +7,9 @@ import '../index.css'
 const MyApp = () => {
 
     return (
-        <AppWrapper dataStoreKey='dataStore/semis/values'>
+        // <AppWrapper dataStoreKey='dataStore/semis/values'>
             <Router />
-        </AppWrapper>
+        // </AppWrapper>
     )
 }
 

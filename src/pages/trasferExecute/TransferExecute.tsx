@@ -9,7 +9,7 @@ import { useGetSectionTypeLabel, useHeader, useTableData, useUrlParams, useViewP
 import CustomInfoPage from "../info/infoPage";
 
 const TransferExecute = () => {
-  const [pagination, setPagination] = useState({ page: 1, pageSize: 10, totalPages: 0 });
+  const [pagination, setPagination] = useState({ page: 1, pageSize: 10, totalPages: 0, totalElements: 0 });
   const { sectionName } = useGetSectionTypeLabel();
   const dataStoreData = useDataStoreKey({ sectionType: sectionName });
   const programsValues = useProgramsKeys();
