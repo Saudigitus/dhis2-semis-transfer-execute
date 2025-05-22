@@ -6,7 +6,7 @@ import { useUrlParams } from 'dhis2-semis-functions';
 import { ProgramConfig, selectedDataStoreKey } from 'dhis2-semis-types'
 import RequestTransferModal from '../modal/requestTransferModa';
 
-function EnrollmentActionsButtons({ programData, selectedDataStoreKey, selected, setSelected }: { setSelected: (args: any) => void, selected: any, programData: ProgramConfig, selectedDataStoreKey: selectedDataStoreKey }) {
+function EnrollmentActionsButtons({ selected, setSelected }: { setSelected: (args: any) => void, selected: any }) {
     const { urlParameters } = useUrlParams();
     const { school: orgUnit } = urlParameters();
     const [openRequestModal, setOpenRequestModal] = React.useState(false);
@@ -25,7 +25,7 @@ function EnrollmentActionsButtons({ programData, selectedDataStoreKey, selected,
                 </Tooltip>
             </ButtonStrip>
 
-            {openRequestModal && <RequestTransferModal setSelected={setSelected} programData={programData} selectedDataStoreKey={selectedDataStoreKey} selected={selected} open={openRequestModal} setOpen={setOpenRequestModal} />}
+            {openRequestModal && <RequestTransferModal setSelected={setSelected} selected={selected} open={openRequestModal} setOpen={setOpenRequestModal} />}
         </div>
     )
 }

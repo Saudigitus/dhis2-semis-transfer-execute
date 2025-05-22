@@ -62,8 +62,6 @@ const TransferExecute = () => {
             <EnrollmentActionsButtons
               selected={selected}
               setSelected={setSelected}
-              selectedDataStoreKey={dataStoreData}
-              programData={programData as unknown as ProgramConfig}
             />
           }
           setFilterState={setFilterState}
