@@ -14,7 +14,7 @@ function EnrollmentActionsButtons({ selected, setSelected }: { setSelected: (arg
     return (
         <div className={styles.container}>
             <ButtonStrip className={styles.work_buttons}>
-                <Tooltip title={orgUnit === null ? "Please select an organisation unit before" : ""}
+                <Tooltip title={orgUnit === null ? "Please select an organisation unit before" : selected?.length == 0 ? "Select at least one row." : ""}
                     onClick={() => setOpenRequestModal(true)}
                 >
                     <span>
