@@ -1,9 +1,9 @@
-import { Center, CircularLoader, NoticeBox } from "@dhis2/ui";
+import { useState } from "react";
 import { format } from "date-fns";
+import { Form } from "react-final-form";
+import { Center, CircularLoader, NoticeBox } from "@dhis2/ui";
 import { CustomForm, ModalComponent, useDataStoreKey, WithBorder, WithPadding } from "dhis2-semis-components";
 import { useGetDataElements, useShowAlerts, useUploadEvents, useUrlParams } from "dhis2-semis-functions";
-import { useState } from "react";
-import { Form } from "react-final-form";
 
 export default function RequestTransferModal({ open, setOpen, selected, setSelected }: { setSelected: (args: any) => void, open: boolean, setOpen: (args: any) => void, selected: any }) {
     const { urlParameters } = useUrlParams()
