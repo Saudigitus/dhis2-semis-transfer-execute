@@ -1,10 +1,9 @@
 import React from 'react'
-import { IconAddCircle24, Button, ButtonStrip } from "@dhis2/ui";
-import Tooltip from '@material-ui/core/Tooltip';
-import styles from './enrollmentActionsButtons.module.css'
+import { Tooltip } from '@mui/material';
 import { useUrlParams } from 'dhis2-semis-functions';
-import { ProgramConfig, selectedDataStoreKey } from 'dhis2-semis-types'
+import styles from './enrollmentActionsButtons.module.css'
 import RequestTransferModal from '../modal/requestTransferModa';
+import { IconAddCircle24, Button, ButtonStrip } from "@dhis2/ui";
 
 function EnrollmentActionsButtons({ selected, setSelected }: { setSelected: (args: any) => void, selected: any }) {
     const { urlParameters } = useUrlParams();
