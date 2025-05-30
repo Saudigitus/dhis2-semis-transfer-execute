@@ -36,7 +36,11 @@ const TransferExecute = () => {
         ].filter((filter): filter is string => filter !== null),
       });
     }
-  }, [filterState, refetch, school, pagination, academicYear, grade, section]);
+  }, [filterState, refetch, school, pagination.page, pagination.pageSize, academicYear, grade, section]);
+
+  useEffect(() => {
+    setPagination((prev: any) => ({ ...prev, totalPages: tableData?.pagination?.totalPages, totalElements: tableData?.pagination?.totalElements }))
+  }, [tableData])
 
   return (
     <div style={{ height: "85vh" }}>
@@ -45,7 +49,7 @@ const TransferExecute = () => {
       ) : (
         <Table
           programConfig={programData!}
-          title="Transfer"
+          title="Transfer Execute"
           viewPortWidth={viewPortWidth}
           columns={columns}
           tableData={tableData.data}

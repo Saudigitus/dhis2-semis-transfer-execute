@@ -68,13 +68,16 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
         <ModalComponent
             open={open}
             size="large"
-            children={<WithPadding>
+            title="Request transfer"
+            handleClose={() => setOpen(false)}
+        >
+            <WithPadding p="0">
                 <NoticeBox
                     title={`WARNING! ${selected?.length} rows will be affected`} warning>
                 </NoticeBox>
                 <WithPadding />
                 <WithBorder type="all" >
-                    <WithPadding>
+                    <WithPadding p="10px 0">
                         {
                             dataElements.length > 0 ?
                                 <CustomForm
@@ -84,8 +87,8 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                                     formFields={[
                                         {
                                             storyBook: false,
-                                            name: "Final Result",
-                                            description: "Student final result",
+                                            name: "Perform transfer",
+                                            description: "Select the destination school",
                                             fields: dataElements?.filter(x => x.id !== transfer.status)
                                         }
                                     ]}
@@ -93,15 +96,14 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                                     withButtons={true}
                                     onFormSubtmit={(e) => onSubmit(e)}
                                     onCancel={() => setOpen(false)}
+                                    submitButtonLabel="Perform Transfer"
                                 /> : <Center>
                                     <CircularLoader />
                                 </Center>
                         }
                     </WithPadding>
                 </WithBorder>
-            </WithPadding>}
-            title="Request transfer"
-            handleClose={() => setOpen(false)}
-        />
+            </WithPadding>
+        </ModalComponent>
     )
 }

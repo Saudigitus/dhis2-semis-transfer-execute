@@ -2,12 +2,23 @@ import '../index.css'
 import React from 'react'
 import './App.module.css'
 import { Router } from '../components/routes'
+import { HashRouter } from 'react-router-dom'
+import { useConfig } from '@dhis2/app-runtime'
+import { AppWrapper } from 'dhis2-semis-components'
 
-const MyApp = () => {
+const TransferExecute = () => {
+    const { baseUrl } = useConfig()
 
     return (
-        <Router />
+        <AppWrapper
+            baseUrl={baseUrl}
+            dataStoreKey='dataStore/semis/values'
+        >
+            <HashRouter>
+                <Router />
+            </HashRouter>
+        </AppWrapper>
     )
 }
 
-export default MyApp
+export default TransferExecute

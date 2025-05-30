@@ -1,2 +1,3 @@
-import EnrollmentPage from './app/App'
-export { EnrollmentPage }
+import TransferExecute from './app/App'
+
+export { TransferExecute }
