@@ -27,6 +27,7 @@ const TransferExecute = () => {
         pageSize: pagination.pageSize,
         program: programData!.id as string,
         orgUnit: school,
+        order: dataStoreData?.defaults?.defaultOrder,
         baseProgramStage: dataStoreData?.registration?.programStage as string,
         attributeFilters: filterState.attributes,
         dataElementFilters: [
