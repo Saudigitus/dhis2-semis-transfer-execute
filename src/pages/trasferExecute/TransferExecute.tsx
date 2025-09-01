@@ -18,7 +18,7 @@ const TransferExecute = () => {
   const { getData, tableData, loading } = useTableData({ module: Modules.Transfer });
   const [pagination, setPagination] = useState({ page: 1, pageSize: 50, totalPages: 0, totalElements: 0 });
   const [filterState, setFilterState] = useState<{ dataElements: any; attributes: any; }>({ attributes: [], dataElements: [] });
-  const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, tableColumns: [], programStage: "" });
+  const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, programStage: "" });
 
   useEffect(() => {
     if (school) {
