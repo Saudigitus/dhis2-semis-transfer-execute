@@ -7,7 +7,7 @@ import { useGetDataElements, useShowAlerts, useUploadEvents, useUrlParams } from
 
 export default function RequestTransferModal({ open, setOpen, selected, setSelected }: { setSelected: (args: any) => void, open: boolean, setOpen: (args: any) => void, selected: any }) {
     const { urlParameters } = useUrlParams()
-    const { sectionType, school } = urlParameters()
+    const { sectionType, school } = urlParameters
     const { transfer } = useDataStoreKey({ sectionType: sectionType as unknown as "student" | "staff" })
     const { dataElements } = useGetDataElements({ programStageId: transfer?.programStage as unknown as string, type: "programStage" })
     const { hide, show } = useShowAlerts()
