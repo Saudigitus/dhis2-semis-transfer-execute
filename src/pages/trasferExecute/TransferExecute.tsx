@@ -60,7 +60,6 @@ const TransferExecute = () => {
           selected={selected}
           setSelected={setSelected}
           defaultFilterNumber={5}
-          enableInactiveRowSelection={true}
           filterState={{ attributes: [], dataElements: [] }}
           loading={loading}
           rightElements={
