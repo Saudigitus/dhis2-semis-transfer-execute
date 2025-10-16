@@ -16,7 +16,7 @@ function EnrollmentActionsButtons(props: EnrollmentActionsButtonsProps) {
     const { search } = useLocation()
     const { selected, setSelected } = props
     const { urlParameters } = useUrlParams();
-    const { school: orgUnit } = urlParameters();
+    const { school: orgUnit } = urlParameters;
     const [openRequestModal, setOpenRequestModal] = React.useState(false);
 
     return (
