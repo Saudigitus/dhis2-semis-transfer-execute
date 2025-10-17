@@ -16,7 +16,8 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
 
     async function onSubmit(values: any) {
         setLoading(true)
-        const dataElementsToPost = dataElements?.filter(x => x.id !== transfer.status)
+        const dataElementsToPost = dataElements?.filter(x => x.id !== transfer.status && x.id !== transfer.originSchool)
+
         let proceed = true, dataElementsValues = []
 
         for (let dataElement of dataElementsToPost)
@@ -38,7 +39,9 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                         trackedEntityInstance: event?.trackedEntity,
                         dataValues: [
                             ...dataElementsValues,
-                            { dataElement: transfer.status, value: 'Pending' }
+                            { dataElement: transfer.status, value: 'Pending' },
+                            { dataElement: transfer.originSchool, value: school }
+
                         ]
                     })
             }
@@ -89,7 +92,7 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                                             storyBook: false,
                                             name: "Perform transfer",
                                             description: "Select the destination school",
-                                            fields: dataElements?.filter(x => x.id !== transfer.status)
+                                            fields: dataElements?.filter(x => x.id !== transfer.status && x.id !== transfer?.originSchool)
                                         }
                                     ]}
                                     storyBook={false}

@@ -45,6 +45,7 @@ const TransferExecute = () => {
     setPagination((prev: any) => ({ ...prev, totalPages: tableData?.pagination?.totalPages, totalElements: tableData?.pagination?.totalElements }))
   }, [tableData])
 
+  console.log(tableData)
   return (
     <div style={{ height: "85vh" }}>
       {!(Boolean(schoolName) && Boolean(school)) ? (
