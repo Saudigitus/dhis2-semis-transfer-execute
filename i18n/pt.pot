@@ -7,51 +7,53 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "POT-Creation-Date: 2025-10-31T09:11:12.065Z\n"
 "PO-Revision-Date: 2025-10-31T09:11:12.065Z\n"
+"Language: pt\n"
+"Content-Language: pt-BR\n"
 
 msgid "Please select an organisation unit before"
-msgstr "Please select an organisation unit before"
+msgstr "Por favor, selecione uma unidade organizacional antes"
 
 msgid "Select at least one row."
-msgstr "Select at least one row."
+msgstr "Selecione pelo menos uma linha."
 
 msgid "Execute transfer"
-msgstr "Execute transfer"
+msgstr "Executar transferência"
 
 msgid "Transfer request sent successfully"
-msgstr "Transfer request sent successfully"
+msgstr "Pedido de transferência enviado com sucesso"
 
 msgid "Please fill all required fields"
-msgstr "Please fill all required fields"
+msgstr "Por favor, preencha todos os campos obrigatórios"
 
 msgid "Request transfer"
-msgstr "Request transfer"
+msgstr "Solicitar transferência"
 
 msgid "WARNING!"
-msgstr "WARNING!"
+msgstr "AVISO!"
 
 msgid "rows will be affected"
-msgstr "rows will be affected"
+msgstr "linhas serão afetadas"
 
 msgid "Perform transfer"
-msgstr "Perform transfer"
+msgstr "Realizar transferência"
 
 msgid "Select the destination school"
-msgstr "Select the destination school"
+msgstr "Selecione a escola de destino"
 
 msgid "Perform Transfer"
-msgstr "Perform Transfer"
+msgstr "Realizar Transferência"
 
 msgid "SEMIS-Transfer-Execute"
 msgstr "SEMIS-Transfer-Execute"
 
 msgid "Follow the instructions to proceed"
-msgstr "Follow the instructions to proceed"
+msgstr "Siga as instruções para prosseguir"
 
 msgid "Select the Organization unit you want to view data"
-msgstr "Select the Organization unit you want to view data"
+msgstr "Selecione a unidade organizacional que deseja visualizar os dados"
 
 msgid "Use global filters(Class, Grade and Academic Year)"
-msgstr "Use global filters(Class, Grade and Academic Year)"
+msgstr "Use os filtros globais (Turma, Classe e Ano Letivo)"
 
 msgid "Transfer Execute"
-msgstr "Transfer Execute"
+msgstr "Executar Transferência"

@@ -1,0 +1,18 @@
+{
+    "Please select an organisation unit before": "Veuillez d’abord sélectionner une unité d’organisation",
+    "Select at least one row.": "Sélectionnez au moins une ligne.",
+    "Execute transfer": "Exécuter le transfert",
+    "Transfer request sent successfully": "Demande de transfert envoyée avec succès",
+    "Please fill all required fields": "Veuillez remplir tous les champs obligatoires",
+    "Request transfer": "Demander un transfert",
+    "WARNING!": "AVERTISSEMENT!",
+    "rows will be affected": "lignes seront affectées",
+    "Perform transfer": "Effectuer le transfert",
+    "Select the destination school": "Sélectionnez l’école de destination",
+    "Perform Transfer": "Effectuer le transfert",
+    "SEMIS-Transfer-Execute": "SEMIS-Transfer-Execute",
+    "Follow the instructions to proceed": "Suivez les instructions pour continuer",
+    "Select the Organization unit you want to view data": "Sélectionnez l’unité d’organisation dont vous souhaitez voir les données",
+    "Use global filters(Class, Grade and Academic Year)": "Utilisez les filtres globaux (Classe, Niveau et Année académique)",
+    "Transfer Execute": "Transfer Execute"
+}
