@@ -4,8 +4,9 @@ import { Form } from "react-final-form";
 import { Center, CircularLoader, NoticeBox } from "@dhis2/ui";
 import { CustomForm, ModalComponent, useDataStoreKey, WithBorder, WithPadding } from "dhis2-semis-components";
 import { useGetDataElements, useShowAlerts, useUploadEvents, useUrlParams } from "dhis2-semis-functions";
+import { D2I18n } from "dhis2-semis-types";
 
-export default function RequestTransferModal({ open, setOpen, selected, setSelected }: { setSelected: (args: any) => void, open: boolean, setOpen: (args: any) => void, selected: any }) {
+export default function RequestTransferModal({ i18n, open, setOpen, selected, setSelected }: { i18n: D2I18n, setSelected: (args: any) => void, open: boolean, setOpen: (args: any) => void, selected: any }) {
     const { urlParameters } = useUrlParams()
     const { sectionType, school } = urlParameters
     const { transfer } = useDataStoreKey({ sectionType: sectionType as unknown as "student" | "staff" })
@@ -52,7 +53,7 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                     setOpen(false);
                     setSelected([])
                     show({
-                        message: `Transfer request sent successfully`,
+                        message: i18n.t(`Transfer request sent successfully`),
                         type: { success: true }
                     });
                     setTimeout(hide, 5000);
@@ -60,7 +61,7 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                 .catch(() => { setLoading(false); setOpen(false) })
         } else {
             show({
-                message: `Please fill all required fields`,
+                message: i18n.t(`Please fill all required fields`),
                 type: { warning: true }
             });
             setTimeout(hide, 5000);
@@ -71,12 +72,12 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
         <ModalComponent
             open={open}
             size="large"
-            title="Request transfer"
+            title={i18n.t("Request transfer")}
             handleClose={() => setOpen(false)}
         >
             <WithPadding p="0">
                 <NoticeBox
-                    title={`WARNING! ${selected?.length} rows will be affected`} warning>
+                    title={`${i18n.t("WARNING!")} ${selected?.length} ${i18n.t("rows will be affected")}`} warning>
                 </NoticeBox>
                 <WithPadding />
                 <WithBorder type="all" >
@@ -90,8 +91,8 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                                     formFields={[
                                         {
                                             storyBook: false,
-                                            name: "Perform transfer",
-                                            description: "Select the destination school",
+                                            name: i18n.t("Perform transfer"),
+                                            description: i18n.t("Select the destination school"),
                                             fields: dataElements?.filter(x => x.id !== transfer.status && x.id !== transfer?.originSchool)
                                         }
                                     ]}
@@ -99,7 +100,7 @@ export default function RequestTransferModal({ open, setOpen, selected, setSelec
                                     withButtons={true}
                                     onFormSubtmit={(e) => onSubmit(e)}
                                     onCancel={() => setOpen(false)}
-                                    submitButtonLabel="Perform Transfer"
+                                    submitButtonLabel={i18n.t("Perform Transfer")}
                                 /> : <Center>
                                     <CircularLoader />
                                 </Center>

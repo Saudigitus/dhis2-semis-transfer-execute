@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import CustomInfoPage from "../info/infoPage";
-import { ProgramConfig } from "dhis2-semis-types";
+import { D2I18n, ProgramConfig } from "dhis2-semis-types";
 import React, { useEffect, useState } from "react";
 import { TableDataRefetch, Modules } from "dhis2-semis-types";
 import { Table, useSchoolCalendarKey } from "dhis2-semis-components";
@@ -8,7 +8,7 @@ import useGetSelectedKeys from "../../hooks/config/useGetSelectedKeys";
 import { useHeader, useTableData, useUrlParams, useViewPortWidth } from "dhis2-semis-functions";
 import EnrollmentActionsButtons from "../../components/enrollmentButtons/EnrollmentActionsButtons";
 
-const TransferExecute = () => {
+const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
   const { urlParameters } = useUrlParams();
   const { viewPortWidth } = useViewPortWidth();
   const schoolCalendar = useSchoolCalendarKey()
@@ -20,7 +20,6 @@ const TransferExecute = () => {
   const [pagination, setPagination] = useState({ page: 1, pageSize: 50, totalPages: 0, totalElements: 0 });
   const [filterState, setFilterState] = useState<{ dataElements: any; attributes: any; }>({ attributes: [], dataElements: [] });
   const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, programStage: "" });
-
 
   useEffect(() => {
     if (school) {
@@ -45,15 +44,14 @@ const TransferExecute = () => {
     setPagination((prev: any) => ({ ...prev, totalPages: tableData?.pagination?.totalPages, totalElements: tableData?.pagination?.totalElements }))
   }, [tableData])
 
-  console.log(tableData)
   return (
     <div style={{ height: "85vh" }}>
       {!(Boolean(schoolName) && Boolean(school)) ? (
-        <CustomInfoPage />
+        <CustomInfoPage i18n={i18n} />
       ) : (
         <Table
           programConfig={programData!}
-          title="Transfer Execute"
+          title={i18n.t("Transfer Execute")}
           viewPortWidth={viewPortWidth}
           columns={columns}
           tableData={tableData.data}
@@ -65,6 +63,7 @@ const TransferExecute = () => {
           loading={loading}
           rightElements={
             <EnrollmentActionsButtons
+            i18n={i18n}
               selected={selected}
               setSelected={setSelected}
             />

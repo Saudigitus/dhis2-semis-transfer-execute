@@ -4,54 +4,56 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "POT-Creation-Date: 2025-10-31T09:11:12.065Z\n"
 "PO-Revision-Date: 2025-10-31T09:11:12.065Z\n"
+"Language: fr\n"
+"Content-Language: fr-FR\n"
 
 msgid "Please select an organisation unit before"
-msgstr "Please select an organisation unit before"
+msgstr "Veuillez d’abord sélectionner une unité d’organisation"
 
 msgid "Select at least one row."
-msgstr "Select at least one row."
+msgstr "Sélectionnez au moins une ligne."
 
 msgid "Execute transfer"
-msgstr "Execute transfer"
+msgstr "Exécuter le transfert"
 
 msgid "Transfer request sent successfully"
-msgstr "Transfer request sent successfully"
+msgstr "Demande de transfert envoyée avec succès"
 
 msgid "Please fill all required fields"
-msgstr "Please fill all required fields"
+msgstr "Veuillez remplir tous les champs obligatoires"
 
 msgid "Request transfer"
-msgstr "Request transfer"
+msgstr "Demander un transfert"
 
 msgid "WARNING!"
-msgstr "WARNING!"
+msgstr "AVERTISSEMENT!"
 
 msgid "rows will be affected"
-msgstr "rows will be affected"
+msgstr "lignes seront affectées"
 
 msgid "Perform transfer"
-msgstr "Perform transfer"
+msgstr "Effectuer le transfert"
 
 msgid "Select the destination school"
-msgstr "Select the destination school"
+msgstr "Sélectionnez l’école de destination"
 
 msgid "Perform Transfer"
-msgstr "Perform Transfer"
+msgstr "Effectuer le transfert"
 
 msgid "SEMIS-Transfer-Execute"
 msgstr "SEMIS-Transfer-Execute"
 
 msgid "Follow the instructions to proceed"
-msgstr "Follow the instructions to proceed"
+msgstr "Suivez les instructions pour continuer"
 
 msgid "Select the Organization unit you want to view data"
-msgstr "Select the Organization unit you want to view data"
+msgstr "Sélectionnez l’unité d’organisation dont vous souhaitez voir les données"
 
 msgid "Use global filters(Class, Grade and Academic Year)"
-msgstr "Use global filters(Class, Grade and Academic Year)"
+msgstr "Utilisez les filtres globaux (Classe, Niveau et Année académique)"
 
 msgid "Transfer Execute"
 msgstr "Transfer Execute"
