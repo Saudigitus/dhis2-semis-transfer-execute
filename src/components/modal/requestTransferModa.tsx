@@ -32,12 +32,13 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
                     {
                         enrollment: event?.enrollmentId,
                         occurredAt: format(new Date(), "yyyy-MM-dd"),
+                        updatedAt: format(new Date(), "yyyy-MM-dd"),
                         orgUnit: school,
                         program: event?.program,
                         programStage: transfer?.programStage,
                         scheduledAt: format(new Date(), "yyyy-MM-dd"),
                         status: "ACTIVE",
-                        trackedEntityInstance: event?.trackedEntity,
+                        trackedEntity: event?.trackedEntity,
                         dataValues: [
                             ...dataElementsValues,
                             { dataElement: transfer.status, value: 'Pending' },

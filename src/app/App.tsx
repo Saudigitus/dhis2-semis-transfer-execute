@@ -6,18 +6,21 @@ import { AppWrapper } from 'dhis2-semis-components'
 import { useConfig } from '@dhis2/app-runtime'
 import { HashRouter } from 'react-router-dom'
 import { D2I18n } from 'dhis2-semis-types'
+import translation from '../locales/index'
 
 const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
     const { baseUrl } = useConfig()
+    const translate = i18n ? i18n : translation
 
     return (
         // <AppWrapper
+        //     i18n={translate}
         //     baseUrl={baseUrl}
         //     dataStoreKey="dataStore/semis/values"
         //     schoolCalendarKey={"dataStore/semis/schoolCalendar"}
         // >
         //     <HashRouter>
-        <Router i18n={i18n} />
+                <Router i18n={translate} />
         //     </HashRouter>
         // </AppWrapper>
     )
