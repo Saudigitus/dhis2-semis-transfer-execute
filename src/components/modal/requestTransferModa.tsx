@@ -61,7 +61,7 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
                 })
                 .catch(() => { setLoading(false); setOpen(false) })
         } else {
-            setLoading(true)
+            setLoading(false)
             show({
                 message: i18n.t(`Please fill all required fields`),
                 type: { warning: true }
@@ -70,7 +70,6 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
         }
     }
 
-    console.log(dataElements)
     return (
         <ModalComponent
             open={open}
