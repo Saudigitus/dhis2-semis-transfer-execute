@@ -22,7 +22,7 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
         let proceed = true, dataElementsValues = []
 
         for (let dataElement of dataElementsToPost)
-            if (!values[dataElement.id]) proceed = false
+            if (!values[dataElement.id] && dataElement?.required) proceed = false
             else dataElementsValues.push({ dataElement: dataElement.id, value: values[dataElement.id] })
 
         if (proceed) {
@@ -61,6 +61,7 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
                 })
                 .catch(() => { setLoading(false); setOpen(false) })
         } else {
+            setLoading(false)
             show({
                 message: i18n.t(`Please fill all required fields`),
                 type: { warning: true }
