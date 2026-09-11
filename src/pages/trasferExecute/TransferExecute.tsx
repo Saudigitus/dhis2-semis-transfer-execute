@@ -58,7 +58,6 @@ const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
           selectable={true}
           selected={selected}
           setSelected={setSelected}
-          defaultFilterNumber={5}
           filterState={{ attributes: [], dataElements: [] }}
           loading={loading}
           rightElements={
