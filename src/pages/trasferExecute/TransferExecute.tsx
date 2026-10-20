@@ -20,7 +20,7 @@ const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
   const { getData, tableData, loading } = useTableData({ module: Modules.Transfer_Execute });
   const [pagination, setPagination] = useState({ page: 1, pageSize: 50, totalPages: 0, totalElements: 0 });
   const [filterState, setFilterState] = useState<{ dataElements: any; attributes: any; }>({ attributes: [], dataElements: [] });
-const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, programStage: "" });
+  const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, programStage: "" });
 
   useEffect(() => {
     if (school) {
@@ -61,8 +61,12 @@ const { columns } = useHeader({ dataStoreData, programConfigData: programData as
             transferStatus: dataStoreData?.transfer?.status,
             statusOptions: dataStoreData?.transfer?.statusOptions || [],
           })}
-          inactiveRowMessage={i18n.t(`This ${sectionType} enrollment was cancelled`)}
-          disabledRowMessage={i18n.t(`This ${sectionType} has a pedding transfer request`)}
+          inactiveRowMessage={i18n.t(`This {{sectionType}} enrollment was cancelled`, {
+            sectionType: `${i18n.t(sectionType!)}`
+          })}
+          disabledRowMessage={i18n.t(`This {{sectionType}} has a pedding transfer request`, {
+            sectionType: `${i18n.t(sectionType!)}`
+          })}
           selectable={true}
           selected={selected}
           setSelected={setSelected}
