@@ -7,6 +7,7 @@ import { Table, useSchoolCalendarKey } from "dhis2-semis-components";
 import useGetSelectedKeys from "../../hooks/config/useGetSelectedKeys";
 import { useHeader, useTableData, useUrlParams, useViewPortWidth } from "dhis2-semis-functions";
 import EnrollmentActionsButtons from "../../components/enrollmentButtons/EnrollmentActionsButtons";
+import { formatTableData } from "../../utils/table/formatTableData";
 
 const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
   const { urlParameters } = useUrlParams();
@@ -15,11 +16,11 @@ const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
   const [refetch] = useRecoilState(TableDataRefetch);
   const [selected, setSelected] = useState<any[]>([]);
   const { dataStoreData, program: programData } = useGetSelectedKeys()
-  const { academicYear, grade, class: section, school, schoolName, } = urlParameters;
-  const { getData, tableData, loading } = useTableData({ module: Modules.Transfer });
+  const { academicYear, grade, class: section, school, schoolName, sectionType } = urlParameters;
+  const { getData, tableData, loading } = useTableData({ module: Modules.Transfer_Execute });
   const [pagination, setPagination] = useState({ page: 1, pageSize: 50, totalPages: 0, totalElements: 0 });
   const [filterState, setFilterState] = useState<{ dataElements: any; attributes: any; }>({ attributes: [], dataElements: [] });
-  const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, programStage: "" });
+const { columns } = useHeader({ dataStoreData, programConfigData: programData as unknown as ProgramConfig, programStage: "" });
 
   useEffect(() => {
     if (school) {
@@ -30,6 +31,7 @@ const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
         orgUnit: school,
         order: dataStoreData?.defaults?.defaultOrder,
         baseProgramStage: dataStoreData?.registration?.programStage as string,
+        otherProgramStage: dataStoreData?.transfer?.programStage as string,
         attributeFilters: filterState.attributes,
         dataElementFilters: [
           academicYear !== null ? `${schoolCalendar?.academicYear}:in:${academicYear}` : null,
@@ -54,7 +56,13 @@ const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
           title={i18n.t("Transfer Execute")}
           viewPortWidth={viewPortWidth}
           columns={columns}
-          tableData={tableData.data}
+          tableData={formatTableData({
+            tableData: tableData.data,
+            transferStatus: dataStoreData?.transfer?.status,
+            statusOptions: dataStoreData?.transfer?.statusOptions || [],
+          })}
+          inactiveRowMessage={i18n.t(`This ${sectionType} enrollment was cancelled`)}
+          disabledRowMessage={i18n.t(`This ${sectionType} has a pedding transfer request`)}
           selectable={true}
           selected={selected}
           setSelected={setSelected}
@@ -62,7 +70,7 @@ const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
           loading={loading}
           rightElements={
             <EnrollmentActionsButtons
-            i18n={i18n}
+              i18n={i18n}
               selected={selected}
               setSelected={setSelected}
             />

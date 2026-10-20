@@ -14,6 +14,15 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
     const { hide, show } = useShowAlerts()
     const { uploadValues } = useUploadEvents()
     const [loading, setLoading] = useState(false)
+    const [formValues, setFormValues] = useState({})
+
+    const handleChange = (e: { field: any; value: string; name: string }) => {
+        const { name, value } = e;
+        setFormValues(prev => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
     async function onSubmit(values: any) {
         setLoading(true)
@@ -90,6 +99,8 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
                                     Form={Form}
                                     loading={loading}
                                     initialValues={{}}
+                                    disabled={Object.values(formValues)?.includes(school)}
+                                    onInputChange={(e) => { handleChange(e) }}
                                     formFields={[
                                         {
                                             storyBook: false,
@@ -103,6 +114,13 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
                                     onFormSubtmit={(e) => onSubmit(e)}
                                     onCancel={() => setOpen(false)}
                                     submitButtonLabel={i18n.t("Perform Transfer")}
+                                    customComponent={(
+                                        Object.values(formValues)?.includes(school) ?
+                                            <div style={{ padding: "0 15px 20px" }}>
+                                                <NoticeBox error title={i18n.t("Destination school cannot be the same as the origin school")} />
+                                            </div>
+                                            : null)
+                                    }
                                 /> : <Center>
                                     <CircularLoader />
                                 </Center>
