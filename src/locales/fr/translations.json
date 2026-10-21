@@ -14,5 +14,10 @@
     "Follow the instructions to proceed": "Suivez les instructions pour continuer",
     "Select the Organization unit you want to view data": "Sélectionnez l’unité d’organisation dont vous souhaitez voir les données",
     "Use global filters(Class, Grade and Academic Year)": "Utilisez les filtres globaux (Classe, Niveau et Année académique)",
-    "Transfer Execute": "Transfer Execute"
+    "Transfer Execute": "Transfer Execute",
+    "Destination school cannot be the same as the origin school": "L’école de destination ne peut pas être la même que l’école d’origine",
+    "This {{sectionType}} enrollment was cancelled": "L’inscription de ce {{sectionType}} a été annulée",
+    "This {{sectionType}} has a pending transfer request": "Ce {{sectionType}} a une demande de transfert en attente",
+    "student": "élève",
+    "staff": "personnel"
 }
