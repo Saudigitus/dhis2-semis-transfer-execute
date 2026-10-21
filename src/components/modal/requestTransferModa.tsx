@@ -14,7 +14,12 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
     const { hide, show } = useShowAlerts()
     const { uploadValues } = useUploadEvents()
     const [loading, setLoading] = useState(false)
-    const [formValues, setFormValues] = useState({})
+    const [formValues, setFormValues] = useState<Record<string, any>>({})
+    // The destination school is always required, whatever the program stage says (SEMIS-245),
+    // and its search offers every school, not only the user's search area.
+    const transferFields = dataElements
+        ?.filter(x => x.id !== transfer?.status && x.id !== transfer?.originSchool)
+        ?.map(x => x.id === transfer?.destinySchool ? { ...x, required: true, searchAllOrgUnits: true } : x)
 
     const handleChange = (e: { field: any; value: string; name: string }) => {
         const { name, value } = e;
@@ -26,11 +31,9 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
 
     async function onSubmit(values: any) {
         setLoading(true)
-        const dataElementsToPost = dataElements?.filter(x => x.id !== transfer.status && x.id !== transfer.originSchool)
-
         let proceed = true, dataElementsValues = []
 
-        for (let dataElement of dataElementsToPost)
+        for (let dataElement of transferFields)
             if (!values[dataElement.id] && dataElement?.required) proceed = false
             else dataElementsValues.push({ dataElement: dataElement.id, value: values[dataElement.id] })
 
@@ -99,14 +102,14 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
                                     Form={Form}
                                     loading={loading}
                                     initialValues={{}}
-                                    disabled={Object.values(formValues)?.includes(school)}
+                                    disabled={Object.values(formValues)?.includes(school) || !formValues[transfer?.destinySchool]}
                                     onInputChange={(e) => { handleChange(e) }}
                                     formFields={[
                                         {
                                             storyBook: false,
                                             name: i18n.t("Perform transfer"),
                                             description: i18n.t("Select the destination school"),
-                                            fields: dataElements?.filter(x => x.id !== transfer.status && x.id !== transfer?.originSchool)
+                                            fields: transferFields
                                         }
                                     ]}
                                     storyBook={false}
