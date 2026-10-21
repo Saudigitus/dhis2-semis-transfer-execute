@@ -61,10 +61,10 @@ const TransferExecute = ({ i18n }: { i18n: D2I18n }) => {
             transferStatus: dataStoreData?.transfer?.status,
             statusOptions: dataStoreData?.transfer?.statusOptions || [],
           })}
-          inactiveRowMessage={i18n.t("This {{sectionType}} enrollment was cancelled", {
+          inactiveRowMessage={i18n.t(`This {{sectionType}} enrollment was cancelled`, {
             sectionType: `${i18n.t(sectionType!)}`
           })}
-          disabledRowMessage={i18n.t("This {{sectionType}} has a pending transfer request", {
+          disabledRowMessage={i18n.t(`This {{sectionType}} has a pending transfer request`, {
             sectionType: `${i18n.t(sectionType!)}`
           })}
           selectable={true}
