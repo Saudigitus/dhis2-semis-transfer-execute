@@ -18,7 +18,7 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
     // The destination school is always required, whatever the program stage says (SEMIS-245),
     // and its search offers every school, not only the user's search area.
     const transferFields = dataElements
-        ?.filter(x => x.id !== transfer?.status && x.id !== transfer?.originSchool)
+        ?.filter(x => x.id !== transfer?.status)
         ?.map(x => x.id === transfer?.destinySchool ? { ...x, required: true, searchAllOrgUnits: true } : x)
 
     const handleChange = (e: { field: any; value: string; name: string }) => {
@@ -53,8 +53,7 @@ export default function RequestTransferModal({ i18n, open, setOpen, selected, se
                         trackedEntity: event?.trackedEntity,
                         dataValues: [
                             ...dataElementsValues,
-                            { dataElement: transfer.status, value: 'Pending' },
-                            { dataElement: transfer.originSchool, value: school }
+                            { dataElement: transfer.status, value: 'Pending' }
 
                         ]
                     })
